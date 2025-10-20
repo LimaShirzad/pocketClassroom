@@ -1,0 +1,252 @@
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #06d6a0;
+    --dark-bg: #1a1a1a;
+    --darker-bg: #0f0f0f;
+    --card-bg: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+}
+
+[data-bs-theme="light"] {
+    --dark-bg: #f8f9fa;
+    --darker-bg: #e9ecef;
+    --card-bg: #ffffff;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Custom Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Capsule Grid Items */
+.capsule-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.capsule-card:hover {
+    transform: translateY(-5px);
+}
+
+.capsule-actions {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.capsule-card:hover .capsule-actions {
+    opacity: 1;
+}
+
+/* Flashcard Flip Animation */
+.flashcard {
+    perspective: 1000px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.flashcard-front {
+    background: linear-gradient(135deg, var(--primary-color), #667eea);
+    color: white;
+}
+
+.flashcard-back {
+    background: linear-gradient(135deg, var(--secondary-color), #48bb78);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Quiz Styles */
+.quiz-option {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.quiz-option:hover {
+    border-color: var(--primary-color);
+}
+
+.quiz-option.correct {
+    border-color: var(--secondary-color);
+    background-color: rgba(6, 214, 160, 0.1);
+}
+
+.quiz-option.incorrect {
+    border-color: #e53e3e;
+    background-color: rgba(229, 62, 62, 0.1);
+}
+
+/* Progress Bars */
+.progress {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.progress-bar {
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+/* Navigation */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-link.btn {
+    color: var(--text-secondary);
+    border: none;
+    text-decoration: none;
+}
+
+.nav-link.btn:hover,
+.nav-link.btn.active {
+    color: var(--primary-color);
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #667eea);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+/* Badges */
+.badge {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+    
+    .flashcard {
+        height: 250px;
+    }
+    
+    .navbar-nav {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+}
+
+/* Animation for new elements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
